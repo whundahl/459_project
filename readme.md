@@ -1,25 +1,26 @@
-## Deploy Django using Nginx, Celery, Redis and Postgresql with Docker
-A boilerplate to deploy Django with cool stuff. Also serves as an example project from these tutorial:
-1. <a href="https://ruddra.com/docker-django-nginx-postgres/">Deploy Django, Gunicorn, NGINX, Postgresql using Docker</a>
-2. <a href="https://ruddra.com/serve-static-files-by-nginx-from-django-using-docker/">Serve Static Files by Nginx from Django using Docker</a>
-3. <a href="https://ruddra.com/docker-do-stuff-using-celery-using-redis-as-broker/">Docker: Use Celery in Django(Redis as Broker)</a>
+# Docker Django Project for CSCI-459 
 
-Where it is described how this boilerplate was created from scratch so that you can build your own.
+### Requirements 
+Defined in src/equirements.pip
+- Django 1.10  
+- gunicorn 19.6.0  
+- psycopg2 2.7.5
+- celery 4.2.1
+- redis 2.10.6
 
-### Basic Usage
+### Basic Usage of Application 
+To start the project locally, run these two commands:
+
+With the help of Makerfile:
 1. First run `make build` inside root directory.
 2. Then run `make up` to start up the project for first time.
 
-Checkout the [commands](#commands) section for more usage.
+### Architechture Behind the Docker-django Web App
+I have worked with django several times before and the web framework provides a ModelViewController architectural pattern, making it a fairley easy framework to develop with. I find myself using python for more projects each day and this one is no different. Django when coupled with redis and postgreSQL, presents a microservice architectural pattern. 
 
-### Preview
-A default Django project resides in `src` directory. So, when you start the project, you will see the following screen in `8000` port:
+Finally, I realized that there is a need to have a fully deployable application without the hassle of having to set up the boilerplate code each time, with the architecture I define. Of course, every project is different and needs a defined architechture but when working with several django projects it can be hard to spin up new instances of differnt applications because of the need to create a virtual environment for development. Docker solves this for us, and provides us with a way to test and develop many applications at one time from a single machine. Additionally, It makes for easier deployment. 
 
-![Demo One](https://github.com/ruddra/blog-images/raw/master/Demo%201.png)
 
-Also when you access the django container log via `make log-web`, you will see the following:
-
-![Demo Two](https://github.com/ruddra/blog-images/raw/master/Demo%202.png)
 
 ### Commands
 To use this project, run this commands:
